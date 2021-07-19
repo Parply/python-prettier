@@ -3,7 +3,6 @@
 function format {
     FILES=$(git diff --name-only HEAD^..HEAD | grep \.py$)
     if [[ ! -z "$FILES" ]]; then 
-        exit 1 
         isort $FILES
         black $FILES
         if ! git diff-index --quiet HEAD --; then
