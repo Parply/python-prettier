@@ -1,0 +1,19 @@
+name: Reformat python files
+
+on: push
+
+jobs:
+  reformat-code:
+    name: Check style of python files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Check and change
+        uses: CQSRisk/ActionTester@AP-Pylint-20210716
+        with:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          URL: ${{ github.event.issue.comments_url }}
+          COMMENT: false

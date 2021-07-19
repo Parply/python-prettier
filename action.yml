@@ -1,0 +1,25 @@
+name: Python Code Formatter
+author: Alex Pinches
+description: Formats python code
+
+inputs:
+        GH_TOKEN:
+                description: 'GitHub access token with Repo scope'
+                required: true
+                default: ${{ github.token }}
+        URL:
+                description: 'Github comment url'
+                required: false
+                default: ${{ github.event.issue.comments_url }}
+        COMMENT:
+                description: 'Make comment on PR with code report'
+                required: false
+                default: true
+
+
+runs:
+        using: 'docker'
+        image: 'Dockerfile'
+branding:
+        icon: 'activity'
+        color: 'orange'
