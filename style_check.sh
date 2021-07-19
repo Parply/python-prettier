@@ -9,7 +9,7 @@ function format {
     if [[ ! -z "$FILES" ]]; then 
         isort $FILES
         black $FILES
-        if git diff-files --quiet; then
+        if ! git diff-index --quiet HEAD --; then
             git commit --author='Python Formatting Bot' -am 'Formatting'
             git push
         fi
