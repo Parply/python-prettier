@@ -1,6 +1,8 @@
 name: Reformat python files
 
-on: pull_request
+on: 
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   reformat-code:
@@ -10,6 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - name: Check and change
         uses: Parply/python-prettier@master
