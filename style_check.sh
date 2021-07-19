@@ -34,9 +34,10 @@ function format {
         curl \
             -X POST \
             $URL \
-            -H "Content-Type: application/json" \
-            -H "Authorization: token $GITHUB_TOKEN" 
-            --data "{ body: '$MEESAGE'}"
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $GITHUB_TOKEN"  \
+            -d '{ "body": "$MESSAGE", "start_line": 1, "start_side":"left"}'
+            
     fi
 }
 
