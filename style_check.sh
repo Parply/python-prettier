@@ -22,7 +22,7 @@ function format {
             git commit -am 'Formatting'
             git push github HEAD:$GITHUB_HEAD_REF
         fi
-        echo "$COMMENT"
+        echo "$COMMENT" 2>&1
         if [ "$COMMENT" -eq "true" ]; then
             exit 1
             mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
