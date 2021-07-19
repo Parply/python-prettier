@@ -1,24 +1,20 @@
 #!/bin/bash
 
 function get_files {
-    git diff --name-only HEAD^..HEAD | grep '*.py' | echo
+    git diff --name-only HEAD^..HEAD | grep '*.py'
 }
 
 function format {
     FILES=$(get_files)
-    echo "::debug::$FILES"
     if [[ ! -z "$FILES" ]]; then 
-        echo "::debug::FORMAT"
         isort $FILES
         black $FILES
-        if ! git diff-files --quiet; then
-            echo "::debug::GIT"
-            git commit --author="Python Formatting Bot" -am 'Formatting'
+        if git diff-files --quiet; then
+            git commit --author='Python Formatting Bot' -am 'Formatting'
             git push
         fi
 
         if $COMMENT; then
-            echo "::debug::COMMENT"
             mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
             pylint $FILES  --rcfile=./pylintrc > pylint_report.txt
             COMMENT_MYPY=$(cat mypy_report.txt)
