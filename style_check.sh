@@ -7,9 +7,11 @@ function get_files {
 function format {
     FILES=$(get_files)
     if [[ ! -z "$FILES" ]]; then 
+        echo "$FILES"
         isort $FILES
         black $FILES
         if ! git diff-files --quiet; then
+            echo "GIT"
             git commit -am 'Formatting'
             git push
         fi
