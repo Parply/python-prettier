@@ -45,9 +45,6 @@ function format {
                 -H "Content-Type: application/json" \
                 --data "$MESSAGE_BODY" \
             | jq -r '.html_url' )"
-
-
-            curl -X POST -H "Content-Type: application/json" -H "Authorization: token $GITHUB_TOKEN" --data "{\'body\':\'<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY\'}" $URL 
         fi
     fi
 }
