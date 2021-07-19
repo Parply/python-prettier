@@ -22,8 +22,9 @@ function format {
             git commit -am 'Formatting'
             git push github HEAD:$GITHUB_HEAD_REF
         fi
-
+        echo "$COMMENT"
         if [ "$COMMENT" = "true" ]; then
+            exit 1
             mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
             pylint $FILES  --rcfile=./pylintrc > pylint_report.txt
             COMMENT_MYPY=$(cat mypy_report.txt)
