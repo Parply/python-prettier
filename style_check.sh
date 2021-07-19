@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 function get_files {
     git diff --name-only HEAD^..HEAD | grep '*.py' | echo
