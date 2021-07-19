@@ -32,8 +32,7 @@ function format {
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
 
         curl \
-            -X POST \
-            $URL \
+            -X POST "$URL" \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token $GITHUB_TOKEN"  \
             -d '{ "body": "$MESSAGE", "start_line": 1, "start_side":"left"}'
