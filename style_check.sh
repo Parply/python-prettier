@@ -13,7 +13,7 @@ function format {
             git push github HEAD:$GITHUB_HEAD_REF
         fi
 
-        if [ "$COMMENT" = true ]; then
+        if [ "$COMMENT" = "true" ]; then
             mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
             pylint $FILES  --rcfile=./pylintrc > pylint_report.txt
             COMMENT_MYPY=$(cat mypy_report.txt)
