@@ -5,7 +5,7 @@ function get_files {
 }
 
 function format {
-    FILES = get_files
+    FILES = $(get_files)
     if [[! -z "$FILES"]]; then 
         isort $FILES
         black $FILES
