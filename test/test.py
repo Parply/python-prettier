@@ -11,5 +11,4 @@ def test(a):
 
 if __name__ == '__main__':
     print('hello')
-    #s
     aPPle = test(50)

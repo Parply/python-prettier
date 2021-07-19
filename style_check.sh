@@ -6,17 +6,19 @@ function get_files {
 
 function format {
     FILES=$(get_files)
-    echo "$FILES"
+    echo "::debug::$FILES"
     if [[ ! -z "$FILES" ]]; then 
+        echo "::debug::FORMAT"
         isort $FILES
         black $FILES
         if ! git diff-files --quiet; then
-            echo "GIT"
-            git commit -am 'Formatting'
+            echo "::debug::GIT"
+            git commit --author="Python Formatting Bot" -am 'Formatting'
             git push
         fi
 
         if $COMMENT; then
+            echo "::debug::COMMENT"
             mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
             pylint $FILES  --rcfile=./pylintrc > pylint_report.txt
             COMMENT_MYPY=$(cat mypy_report.txt)
