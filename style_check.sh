@@ -7,7 +7,9 @@ function format {
         black $FILES
         if ! git diff-index --quiet HEAD --; then
             git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-            git commit --author='Python Formatting Bot <bot@example.com>' -am 'Formatting'
+            git config --global user.email 'bot@example.com'
+            git config --global user.name 'Python Formatting Bot'
+            git commit -am 'Formatting'
             git push github HEAD:${GITHUB_REF}
         fi
 

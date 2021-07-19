@@ -3,7 +3,7 @@ author: Alex Pinches
 description: Formats python code
 
 inputs:
-        GH_TOKEN:
+        GITHUB_TOKEN:
                 description: 'GitHub access token with Repo scope'
                 required: true
                 default: ${{ github.token }}
@@ -14,7 +14,7 @@ inputs:
         COMMENT:
                 description: 'Make comment on PR with code report'
                 required: false
-                default: true
+                default: 'true'
 
 
 runs:
