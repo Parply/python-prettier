@@ -15,6 +15,10 @@ inputs:
                 description: 'Make comment on PR with code report'
                 required: false
                 default: 'true'
+        PR_BRANCH:
+                description: 'PR BRANCH'
+                required: true
+                default: ${{ github.event.pull_request.head.ref }}
 
 
 runs:
