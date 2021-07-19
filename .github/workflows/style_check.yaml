@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Check and change
-        uses: CQSRisk/ActionTester@AP-Pylint-20210716
+        uses: Parply/python-prettier@master
         with:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           URL: ${{ github.event.issue.comments_url }}
