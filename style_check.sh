@@ -31,19 +31,12 @@ function format {
         COMMENT_MAGIC_HEADER="Formatter"
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
 
-        MESSAGE_BODY="$(jq -n \
-            --arg COMMENT_MAGIC_HEADER "$COMMENT_MAGIC_HEADER" \
-            --arg MESSAGE "$MESSAGE" \
-            '{ body: ($COMMENT_MAGIC_HEADER + "\n" + ($MESSAGE | sub( "^[\\s\\p{Cc}]+"; "" ) | sub( "[\\s\\p{Cc}]+$"; "" ))) }' \
-        )"
-
-        PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-
-        COMMENT_HTML_URL="$(auth_crl "$GITHUB_API/issues/$PR_NUMBER/comments" \
+        curl \
             -X POST \
+            $URL \
             -H "Content-Type: application/json" \
-            --data "$MESSAGE_BODY" \
-        | jq -r '.html_url' )"
+            -H "Authorization: token $GITHUB_TOKEN" 
+            --data "{ body: '$MEESAGE'}"
     fi
 }
 
