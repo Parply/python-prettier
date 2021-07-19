@@ -10,7 +10,7 @@ function format {
             git config --global user.email 'bot@example.com'
             git config --global user.name 'Python Formatting Bot'
             git commit -am 'Formatting'
-            git push origin HEAD:${GITHUB_REF}
+            git push origin HEAD:${GITHUB_SHA}
         fi
 
         if [ "$COMMENT" = true ]; then
