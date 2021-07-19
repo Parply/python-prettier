@@ -6,7 +6,7 @@ function format {
         isort $FILES
         black $FILES
         if ! git diff-index --quiet HEAD --; then
-            git commit --author='Python Formatting Bot' -am 'Formatting'
+            git commit --author='Python Formatting Bot <bot@example.com>' -am 'Formatting'
             git push
         fi
 
