@@ -6,11 +6,12 @@ function format {
         isort $FILES
         black $FILES
         if ! git diff-index --quiet HEAD --; then
+            git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
             git commit --author='Python Formatting Bot <bot@example.com>' -am 'Formatting'
-            git push
+            git push github HEAD:${GITHUB_REF}
         fi
 
-        if $COMMENT; then
+        if [ "$COMMENT" = true ]; then
             mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
             pylint $FILES  --rcfile=./pylintrc > pylint_report.txt
             COMMENT_MYPY=$(cat mypy_report.txt)

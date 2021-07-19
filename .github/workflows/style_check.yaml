@@ -14,6 +14,6 @@ jobs:
       - name: Check and change
         uses: Parply/python-prettier@master
         with:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           URL: ${{ github.event.issue.comments_url }}
-          COMMENT: false
+          COMMENT: 'false'
