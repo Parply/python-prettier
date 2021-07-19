@@ -11,10 +11,6 @@ inputs:
                 description: 'Github comment url'
                 required: false
                 default: ${{ github.event.pull_request.comments_url }}
-        COMMENT:
-                description: 'Make comment on PR with code report'
-                required: false
-                default: 'true'
 
 runs:
         using: 'docker'
