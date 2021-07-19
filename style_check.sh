@@ -6,7 +6,7 @@ function get_files {
 
 function format {
     FILES=$(get_files)
-    if [[! -z "$FILES"]]; then 
+    if [[ ! -z "$FILES" ]]; then 
         isort $FILES
         black $FILES
         if ! git diff-files --quiet; then
