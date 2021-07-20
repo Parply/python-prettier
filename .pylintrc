@@ -5,4 +5,4 @@ max-line-length=88
 good-names=i,j,k
 
 [SPELLING]
-spelling-dict=en_GB
+spelling-dict='en_GB'

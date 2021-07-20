@@ -31,12 +31,12 @@ function format {
         COMMENT_MAGIC_HEADER="Formatter"
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
 
-        curl \
+        curl -s \
             -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token $GITHUB_TOKEN"  \
             -d '{ "body": "$MESSAGE", "start_line": 1, "start_side":"left"}' \
-            $URL
+            "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${PR_NUMBER}/comments"
             
     fi
 }

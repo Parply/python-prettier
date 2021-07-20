@@ -17,4 +17,4 @@ jobs:
         uses: Parply/python-prettier@master
         with:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          URL: ${{ github.event.issue.comments_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
