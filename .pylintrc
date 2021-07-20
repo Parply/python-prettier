@@ -20,4 +20,4 @@ good-names=i,j,k
 bad-names=foo,bar,baz,toto,tutu,tata
 
 [SPELLING]
-spelling-dict=['en_GB']
+spelling-dict='en_GB'
