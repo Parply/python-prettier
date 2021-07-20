@@ -20,7 +20,7 @@ function format {
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
         
 
-        curl --retry 1 -H "Authorization: Token $GITHUB_TOKEN" -X POST -d "{\"body\":\"$MESSAGE\",\"start_line\":1,\"start_side\":\"left\"}" \
+        curl --retry 1 -H "Authorization: Token $GH_TOKEN" -X POST -d "{\"body\":\"$MESSAGE\",\"start_line\":1,\"start_side\":\"left\"}" \
         "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${PR_NUMBER}/comments"      
     fi
 }
