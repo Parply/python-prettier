@@ -1,8 +1,23 @@
+[MASTER]
+# Use multiple processes to speed up Pylint.
+jobs=4
+
 [FORMAT]
+# Maximum number of characters on a single line.
 max-line-length=88
 
+# List of optional constructs for which whitespace checking is disabled. `dict-
+# separator` is used to allow tabulation in dicts, etc.: {1  : 1,\n222: 2}.
+# `trailing-comma` allows a space between comma and closing bracket: (a, ).
+# `empty-line` allows space-only lines.
+no-space-check=trailing-comma,dict-separator
+
 [BASIC]
+# Good variable names which should always be accepted, separated by a comma
 good-names=i,j,k
+
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,bar,baz,toto,tutu,tata
 
 [SPELLING]
 spelling-dict=['en_GB']
