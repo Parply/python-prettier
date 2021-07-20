@@ -10,7 +10,7 @@ inputs:
         URL:
                 description: 'Github comment url'
                 required: false
-                default: ${{ github.event.pull_request.comments_url }}
+                default: ${{ github.event.issue.comments_url }}
 
 runs:
         using: 'docker'
