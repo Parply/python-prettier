@@ -23,10 +23,8 @@ function format {
             git push --force github HEAD:$GITHUB_HEAD_REF
         fi
 
-        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
-        pylint $FILES  --rcfile=./.pylintrc  --enable spelling --spelling-dict en_GB > pylint_report.txt
-        COMMENT_MYPY=$(cat mypy_report.txt)
-        COMMENT_PYLINT=$(cat pylint_report.txt)
+        COMMENT_MYPY=$(mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7)
+        COMMENT_PYLINT=$(pylint $FILES  --rcfile=./.pylintrc  --enable spelling --spelling-dict en_GB)
 
         COMMENT_MAGIC_HEADER="Formatter"
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
