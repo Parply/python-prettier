@@ -24,7 +24,7 @@ function format {
         fi
 
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 > mypy_report.txt
-        pylint $FILES  --rcfile=./.pylintrc > pylint_report.txt
+        pylint $FILES  --rcfile=./.pylintrc  --enable spelling --spelling-dict en_GB > pylint_report.txt
         COMMENT_MYPY=$(cat mypy_report.txt)
         COMMENT_PYLINT=$(cat pylint_report.txt)
 

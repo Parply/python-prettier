@@ -18,6 +18,3 @@ good-names=i,j,k
 
 # Bad variable names which should always be refused, separated by a comma
 bad-names=foo,bar,baz,toto,tutu,tata
-
-[SPELLING]
-spelling-dict='en_GB'
