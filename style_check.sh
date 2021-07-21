@@ -13,6 +13,7 @@ function format {
             git push --force github HEAD:$GITHUB_HEAD_REF
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml 'mypy.xml'
+        cat mypy.xml
         COMMENT_MYPY=$(grep -oP '(?<=failure message\=\"mypy produced messages\">)[^<]+' mypy.xml)
         COMMENT_PYLINT=$(pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc)
 
