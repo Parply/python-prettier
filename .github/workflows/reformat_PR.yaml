@@ -15,4 +15,4 @@ jobs:
       - name: Check and change
         uses: Parply/python-prettier@master
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
