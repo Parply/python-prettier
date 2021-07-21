@@ -1,8 +1,7 @@
 name: Reformat python files
 
-on: 
-  pull_request:
-    types: [opened, synchronize, reopened] 
+on: [pull_request]
+
 
 jobs:
   reformat-code:
