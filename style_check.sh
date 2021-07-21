@@ -20,7 +20,11 @@ function format {
         PAYLOAD=$(echo '{}' | jq --arg body "$MESSAGE" '.body = $body')
         COMMENTS_URL=$(cat /github/workflow/event.json | jq -r .pull_request.comments_url)
 
-        curl -s -S -H "Authorization: token $GITHUB_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL" > /dev/null  
+        echo $COMMENTS_URL
+        echo $PAYLOAD
+        echo $MESSAGE
+
+        curl -s -S -H "Authorization: token $GITHUB_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL"  
     fi
 }
 

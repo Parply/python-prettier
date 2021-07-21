@@ -4,12 +4,8 @@ description: Formats python code
 
 inputs:
         GITHUB_TOKEN:
-                description: 'GitHub access token with Repo scope'
+                description: 'GitHub token'
                 required: true
-        PR_NUMBER:
-                description: 'Github PR Number'
-                required: true
-                default: ${{ github.event.pull_request.number }}
 
 runs:
         using: 'docker'
