@@ -13,7 +13,7 @@ function format {
             git push --force github HEAD:$GITHUB_HEAD_REF
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml mypy.xml
-        COMMENT_MYPY=$(sed '(?<=failure message\=\"mypy produced messages\">)[^<]+' mypy.xml)
+        COMMENT_MYPY=$(awk '(?<=failure message\=\"mypy produced messages\">)[^<]+' mypy.xml)
         COMMENT_PYLINT=$(pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc)
 
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
