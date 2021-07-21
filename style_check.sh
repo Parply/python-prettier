@@ -26,7 +26,7 @@ function format {
         echo $MESSAGE
         echo $GH_TOKEN
 
-        curl -s -S -u "$GH_TOKEN:x-oauth-basic" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL"  #-H "Authorization: token $GITHUB_TOKEN"
+        curl -X POST -H "Authorization: token $GH_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL"  #-H "Authorization: token $GITHUB_TOKEN"
     fi
 }
 
