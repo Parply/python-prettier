@@ -16,12 +16,11 @@ function format {
         COMMENT_MYPY=$(mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7)
         COMMENT_PYLINT=$(pylint $FILES  --rcfile=./.pylintrc)
 
-        COMMENT_MAGIC_HEADER="Formatter"
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
-        
+        PAYLOAD=$(echo '{}' | jq --arg body "$MESSAGE" '.body = $body')
+        COMMENTS_URL=$(cat /github/workflow/event.json | jq -r .pull_request.comments_url)
 
-        curl --retry 1 -H "Authorization: Token $GH_TOKEN" -X POST -d "{\"body\":\"$MESSAGE\",\"start_line\":1,\"start_side\":\"left\"}" \
-        "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues/${PR_NUMBER}/comments"      
+        curl -s -S -H "Authorization: token $GITHUB_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL" > /dev/null  
     fi
 }
 

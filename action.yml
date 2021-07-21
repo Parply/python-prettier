@@ -6,6 +6,8 @@ inputs:
         GITHUB_TOKEN:
                 description: 'GitHub access token with Repo scope'
                 required: true
+                default: ${{ secrets.GITHUB_TOKEN }}
+
         PR_NUMBER:
                 description: 'Github PR Number'
                 required: true
