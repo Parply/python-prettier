@@ -4,7 +4,10 @@ description: Formats python code
 
 inputs:
         GH_TOKEN:
-                description: 'GitHub token'
+                description: 'GitHub Token'
+                required: true
+        PR_NUMBER:
+                description: 'PR Number'
                 required: true
 
 runs:

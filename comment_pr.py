@@ -1,5 +1,6 @@
 import os
 
+from defusedxml.ElementTree import parse
 from github import Github
 
 if __name__ == '__main__':
@@ -7,7 +8,7 @@ if __name__ == '__main__':
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
     PR_NUMBER = os.getenv("PR_NUMBER")
 
-    MESSAGE = os.getenv("MESSAGE")
+    MESSAGE = os.getenv("MESSAGE") + parse(".\mypy.xml").findall("./testcase/failure")[0].text
 
     git = Github(GITHUB_TOKEN)
 

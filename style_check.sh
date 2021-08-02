@@ -13,10 +13,10 @@ function format {
             git push --force github HEAD:$GITHUB_HEAD_REF
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml mypy.xml
-        COMMENT_MYPY=$(sed -n '/^#/,/#$/ {<failure message=\"mypy produced messages\">/#//;</failure>;}' mypy.xml)
+        #COMMENT_MYPY=$(sed -n '/^#/,/#$/ {<failure message=\"mypy produced messages\">/#//;</failure>;}' mypy.xml)
         COMMENT_PYLINT=$(pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc)
 
-        MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n $COMMENT_MYPY"
+        MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n"
         #PAYLOAD=$(echo '{}' | jq --arg body "$MESSAGE" '.body = $body')
         #COMMENTS_URL=$(cat /github/workflow/event.json | jq -r .pull_request.comments_url)
 
@@ -25,7 +25,9 @@ function format {
         echo $MESSAGE
         echo $GH_TOKEN
 
-        python comment_pr.py
+        ls
+        
+        python ".\comment_pr.py"
 
         #curl -i -X POST -H "Authorization: token $GH_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL"  #-H "Authorization: token $GITHUB_TOKEN"
     fi
