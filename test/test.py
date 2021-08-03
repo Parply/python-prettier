@@ -1,15 +1,34 @@
-
-
-import pandas as pd
-
-
 import functools
 
 import numpy as np
-def test(a):  
-    return 2*a + 1 + 4+ 3+ 6 +5 + 5 + 6+ 3 + 6+ 6+ 3+ 3+ 3+3 +3+3 *3+ 3 + 5 
+import pandas as pd
 
-if __name__ == '__main__':
-    print('hello')
-    #a 
+
+def test(a):
+    return (
+        2 * a
+        + 1
+        + 4
+        + 3
+        + 6
+        + 5
+        + 5
+        + 6
+        + 3
+        + 6
+        + 6
+        + 3
+        + 3
+        + 3
+        + 3
+        + 3
+        + 3 * 3
+        + 3
+        + 5
+    )
+
+
+if __name__ == "__main__":
+    print("hello")
+    # a
     aPPle = test(50)
