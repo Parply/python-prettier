@@ -4,3 +4,6 @@ mypy
 pyenchant
 pylint
 pygithub
+numpy
+pandas
+xlwings
