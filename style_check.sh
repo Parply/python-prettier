@@ -16,7 +16,7 @@ function format {
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml /mypy.xml
         #COMMENT_MYPY=$(sed -n '/^#/,/#$/ {<failure message=\"mypy produced messages\">/#//;</failure>;}' mypy.xml)
-        COMMENT_PYLINT=$(pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc)
+        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc > /pylint.txt
 
         MESSAGE="<summary> <b> PEP8 Standard Report </b></summary> \n $COMMENT_PYLINT \n <summary> <b> Typing Report </b></summary> \n"
         #PAYLOAD=$(echo '{}' | jq --arg body "$MESSAGE" '.body = $body')
