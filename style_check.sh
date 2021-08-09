@@ -23,9 +23,7 @@ function format {
         echo $MESSAGE
         echo $GH_TOKEN
         
-        python ./comment_pr.py
-
-        #curl -i -X POST -H "Authorization: token $GH_TOKEN" --header "Content-Type: application/json" --data "$PAYLOAD" "$COMMENTS_URL"  #-H "Authorization: token $GITHUB_TOKEN"
+        python ./comment_pr.py --pylint $MESSAGE
     fi
 }
 
