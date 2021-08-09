@@ -10,6 +10,7 @@ function format {
             ORIGIN = "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
             git config --global user.email 'bot@example.com'
             git config --global user.name 'Python Formatting Bot'
+            git remote set-url origin "https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY"
             git commit -am 'Formatting'
             git push $ORIGIN HEAD:$GITHUB_HEAD_REF
         fi
