@@ -6,5 +6,8 @@ pylint
 pygithub
 numpy
 pandas
+scipy
+scikit-learn
+statsmodels
 xlwings
 defusedxml
