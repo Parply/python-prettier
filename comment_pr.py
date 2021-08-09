@@ -10,6 +10,8 @@ if __name__ == '__main__':
 
     MESSAGE = os.getenv("MESSAGE") + parse(".\mypy.xml").findall("./testcase/failure")[0].text
 
+    print(GITHUB_TOKEN,GITHUB_REPOSITORY,PR_NUMBER,MESSAGE)
+
     git = Github(GITHUB_TOKEN)
 
     repo = git.get_repo(GITHUB_REPOSITORY)
