@@ -12,4 +12,4 @@ def test(a):
 if __name__ == '__main__':
     print('hello')
     #a 
-    aPPle = test(50)
+    aPPle =  test(50)
