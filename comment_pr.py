@@ -8,7 +8,9 @@ if __name__ == '__main__':
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
     PR_NUMBER = os.getenv("PR_NUMBER")
 
-    MESSAGE = os.getenv("MESSAGE") + parse(".\mypy.xml").findall("./testcase/failure")[0].text
+    print(os.getcwd())
+
+    MESSAGE = os.getenv("MESSAGE") + parse("/mypy.xml").findall("./testcase/failure")[0].text
 
     print(GITHUB_TOKEN,GITHUB_REPOSITORY,PR_NUMBER,MESSAGE)
 

@@ -10,9 +10,9 @@ function format {
             git config --global user.email 'bot@example.com'
             git config --global user.name 'Python Formatting Bot'
             git commit -am 'Formatting'
-            git push --force github HEAD:$GITHUB_HEAD_REF
+            git push github HEAD:$GITHUB_HEAD_REF
         fi
-        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml mypy.xml
+        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml /mypy.xml
         #COMMENT_MYPY=$(sed -n '/^#/,/#$/ {<failure message=\"mypy produced messages\">/#//;</failure>;}' mypy.xml)
         COMMENT_PYLINT=$(pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc)
 
