@@ -12,7 +12,7 @@ function format {
             git commit -am 'Formatting'
             git push --force github HEAD:$GITHUB_HEAD_REF
         fi
-        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml ./mypy.xml
+        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml /mypy.xml
         #COMMENT_MYPY=$(sed -n '/^#/,/#$/ {<failure message=\"mypy produced messages\">/#//;</failure>;}' mypy.xml)
         COMMENT_PYLINT=$(pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc)
 
