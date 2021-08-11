@@ -30,7 +30,8 @@ function format_python {
         pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc > /pylint.txt
         
         python ./comment_pr.py
-} 
+    fi
+}
 
 git checkout $GITHUB_HEAD_REF
 format_sql
