@@ -3,6 +3,9 @@ import os
 from defusedxml.ElementTree import parse
 from github import Github
 
+HEADER = "<h3>:snake: Python Styling :snake:</h3>\n"
+PEP_HEADER = "<summary> <b> PEP8 Standard Report (pylint)</b></summary>\n"
+MYPY_HEADER = "<summary> <b> Typing Report (mypy)</b></summary>\n"
 if __name__ == '__main__':
     GITHUB_TOKEN = os.getenv("GH_TOKEN")
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
@@ -10,7 +13,11 @@ if __name__ == '__main__':
 
     print(os.getcwd())
 
-    MESSAGE = open("/pylint","r").read() + parse("/mypy.xml").findall("./testcase/failure")[0].text
+    MESSAGE = (HEADER +
+    PEP_HEADER +
+    open("/pylint","r").read() + 
+    MYPY_HEADER + 
+    parse("/mypy.xml").findall("./testcase/failure")[0].text)
 
     print(GITHUB_TOKEN,GITHUB_REPOSITORY,PR_NUMBER,MESSAGE)
 

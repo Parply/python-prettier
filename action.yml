@@ -1,6 +1,6 @@
-name: Python Code Formatter
+name: Python & SQL Code Formatter
 author: Alex Pinches
-description: Formats python code
+description: Formats Python and SQL code
 
 inputs:
         GH_TOKEN:
@@ -13,6 +13,8 @@ inputs:
 runs:
         using: 'docker'
         image: 'Dockerfile'
+        env:
+                DOCKER_BUILDKIT: 1 
 branding:
         icon: 'activity'
         color: 'orange'
