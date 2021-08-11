@@ -1,3 +1,4 @@
+#!/bin/bash
 
 function commit_git {
     git config --global user.email 'bot@example.com'
@@ -12,7 +13,7 @@ function format_sql {
     if [[ ! -z "$FILES" ]]; then 
         echo $FILES | xargs -n 1 -P 8 sqlformat -f "{}" -g "{}"
         if ! git diff-index --quiet HEAD --; then
-            commit_git "SQL Formatting Bot" ":whale: SQL Formatting"
+            commit_git "SQL Formatting Bot" ":whale: SQL Formatting :whale:"
         fi
     fi
 }
@@ -23,11 +24,14 @@ function format_python {
         isort $FILES
         black $FILES
         if ! git diff-index --quiet HEAD --; then
-            commit_git "Python Formatting Bot" ":snake:	Python Formatting"
+            commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml /mypy.xml
         pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc > /pylint.txt
         
         python ./comment_pr.py
-        
 }
+
+git checkout $GITHUB_HEAD_REF
+format_sql
+format_python

@@ -34,4 +34,5 @@ source functions.sh
 
 ### RUN ###
 
+git checkout $GITHUB_HEAD_REF
 format_python
