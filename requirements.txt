@@ -9,5 +9,5 @@ pandas
 scipy
 scikit-learn
 statsmodels
-nodejs
+xlwings
 defusedxml
