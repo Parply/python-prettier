@@ -9,7 +9,7 @@ MYPY_HEADER = "<summary> <b> Typing Report (mypy)</b></summary>\n"
 if __name__ == "__main__":
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
-    PR_NUMBER = os.getenv("PR_NUMBER")
+    PR_NUMBER = int(os.getenv("PR_NUMBER"))
     GITHUB_WORKSPACE = os.getenv("GITHUB_WORKSPACE")
 
     print(os.getcwd())
