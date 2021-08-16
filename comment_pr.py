@@ -18,9 +18,9 @@ if __name__ == "__main__":
     MESSAGE = (
         HEADER
         + PEP_HEADER
-        + open("/action/pylint.txt", "r").read()
+        + open("/action/pylint.txt", "r").read().replace('\n',"<br>")
         + MYPY_HEADER
-        + parse("/action/mypy.xml").findall("./testcase/failure")[0].text
+        + parse("/action/mypy.xml").findall("./testcase/failure")[0].text.replace('\n',"<br>")
     )
 
     print(GITHUB_TOKEN, GITHUB_REPOSITORY, PR_NUMBER, MESSAGE)
