@@ -8,4 +8,4 @@ RUN apt update -y && apt install -y jq hunspell-en-gb enchant nodejs
 RUN npm install --global poor-mans-t-sql-formatter-cli
 RUN export INSTALL_ON_LINUX=1; pip install -r requirements.txt
 RUN echo $PWD
-ENTRYPOINT ["/bin/bash","./main.sh"]
+ENTRYPOINT ["/bin/bash","/main.sh"]
