@@ -12,7 +12,7 @@ function format_sql {
     FILES=$(git diff --name-only HEAD^..HEAD | grep \.sql$)
     if [[ ! -z "$FILES" ]]; then 
         echo $FILES | xargs -n 1 -P 8 sqlformat -f "{}" -g "{}"
-        if [[ ! git diff-index --quiet HEAD --; ]] then
+        if ! git diff-index --quiet HEAD --; then
             commit_git "SQL Formatting Bot" ":whale: SQL Formatting :whale:"
         fi
     fi
