@@ -9,7 +9,7 @@ function commit_git {
 }
 
 function format_python {
-    FILES=$(git diff --name-only HEAD^..HEAD | grep \.py$)
+    FILES=$(git diff --name-only master HEAD | grep \.py$)
     if [[ ! -z "$FILES" ]]; then 
         isort $FILES
         black $FILES

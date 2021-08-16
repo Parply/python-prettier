@@ -1,5 +1,4 @@
 import os
-from html import escape
 
 from defusedxml.ElementTree import parse
 from github import Github
@@ -12,12 +11,18 @@ if __name__ == "__main__":
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
     PR_NUMBER = int(os.getenv("INPUT_PR_NUMBER"))
 
-    MESSAGE = (
+    mypy = parse("/action/mypy.xml").findall("./testcase/failure")
+    if len(mypy) > 0:
+        mypy = "```Python\n"+'\n'.join(map(lambda x: x.text,mypy))+"\n```"
+    else:
+        mypy = "\nNo typing errors"
+
+    message = (
         HEADER
         + PEP_HEADER
-        + "\n```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"
+        + "```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"
         + MYPY_HEADER
-        + "\n```Python\n"+parse("/action/mypy.xml").findall("./testcase/failure")[0].text+"\n```\n"
+        + mypy
     )
 
     git = Github(GITHUB_TOKEN)
@@ -25,4 +30,4 @@ if __name__ == "__main__":
     repo = git.get_repo(GITHUB_REPOSITORY)
     pr = repo.get_pull(PR_NUMBER)
 
-    pr.create_issue_comment(MESSAGE)
+    pr.create_issue_comment(message)

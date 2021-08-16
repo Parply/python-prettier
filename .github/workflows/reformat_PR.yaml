@@ -1,19 +1,21 @@
 name: Reformat python files
 
-on: [pull_request]
-
+on: 
+  pull_request:
+    branches:
+      - master
 
 jobs:
   reformat-code:
     name: Check style of python files
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout PR
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           path: repo
-      - name: Check and change
+      - name: Check, Change and Comment
         uses: Parply/python-prettier@master
         with:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
