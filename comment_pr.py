@@ -4,8 +4,8 @@ from defusedxml.ElementTree import parse
 from github import Github
 
 HEADER = "<h3>:snake: Python Styling :snake:</h3>\n"
-PEP_HEADER = "<summary> <b> PEP8 Standard Report (pylint)</b></summary>\n"
-MYPY_HEADER = "<summary> <b> Typing Report (mypy)</b></summary>\n"
+PEP_HEADER = "<summary><b>PEP8 Standard Report (pylint)</b></summary>\n"
+MYPY_HEADER = "<summary><b>Typing Report (mypy)</b></summary>\n"
 if __name__ == "__main__":
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
