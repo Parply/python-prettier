@@ -13,11 +13,6 @@ jobs:
         with:
           fetch-depth: 0
           path: repo
-      - name: Checkout Action
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          path: action
       - name: Check and change
         uses: Parply/python-prettier@master
         with:
