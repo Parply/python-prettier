@@ -11,7 +11,7 @@ function commit_git {
 function format_sql {
     FILES=$(git diff --name-only HEAD^..HEAD | grep \.sql$)
     if [[ ! -z "$FILES" ]]; then 
-        echo $FILES | xargs -n 1 -P 4 - I sqlformat -f {} -g {}
+        echo $FILES | xargs -n 1 -P 4 -I sqlformat -f {} -g {}
         if ! git diff-index --quiet HEAD --; then
             commit_git "SQL Formatting Bot" ":whale: SQL Formatting :whale:"
         fi
