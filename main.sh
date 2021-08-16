@@ -9,8 +9,8 @@ function commit_git {
 }
 
 function format_python {
-    git diff --name-only $GITHUB_BASE_REF HEAD
-    FILES=$(git diff --name-only $GITHUB_BASE_REF HEAD | grep \.py$)
+    git diff --name-only HEAD^..HEAD
+    FILES=$(git diff --name-only HEAD^..HEAD | grep \.py$)
     if [[ ! -z "$FILES" ]]; then 
         isort $FILES
         black $FILES
