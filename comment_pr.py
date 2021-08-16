@@ -18,7 +18,7 @@ if __name__ == "__main__":
     MESSAGE = (
         HEADER
         + PEP_HEADER
-        + open(f"{GITHUB_WORKSPACE}/action/pylint", "r").read()
+        + open(f"{GITHUB_WORKSPACE}/action/pylint.txt", "r").read()
         + MYPY_HEADER
         + parse(f"{GITHUB_WORKSPACE}/action/mypy.xml").findall("./testcase/failure")[0].text
     )
