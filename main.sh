@@ -27,7 +27,7 @@ function format_python {
             commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml "$GITHUB_WORKSPACE/mypy.xml"
-        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=$GITHUB_WORKSPACE/.pylintrc > "$GITHUB_WORKSPACE/pylint.txt"
+        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile="$GITHUB_WORKSPACE/.pylintrc" > "$GITHUB_WORKSPACE/pylint.txt"
         
         python "$GITHUB_WORKSPACE/comment_pr.py"
     fi
