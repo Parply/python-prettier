@@ -23,7 +23,7 @@ function format_python {
     if [[ ! -z "$FILES" ]]; then 
         isort $FILES
         black $FILES
-        if [[ ! git diff-index --quiet HEAD --; ]] then
+        if ! git diff-index --quiet HEAD --; then
             commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml /mypy.xml
