@@ -15,9 +15,9 @@ if __name__ == "__main__":
     MESSAGE = (
         HEADER
         + PEP_HEADER
-        + "\n```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"#).replace('\n',"<br>").replace(' ',"&nbsp;")
+        + "\n```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"
         + MYPY_HEADER
-        + "\n```Python\n"+parse("/action/mypy.xml").findall("./testcase/failure")[0].text+"\n```\n"#).replace('\n',"<br>").replace(' ',"&nbsp;")
+        + "\n```Python\n"+parse("/action/mypy.xml").findall("./testcase/failure")[0].text+"\n```\n"
     )
 
     git = Github(GITHUB_TOKEN)
