@@ -12,6 +12,7 @@ if __name__ == "__main__":
     PR_NUMBER = os.getenv("PR_NUMBER")
 
     print(os.getcwd())
+    print(os.listdir())
 
     MESSAGE = (
         HEADER
