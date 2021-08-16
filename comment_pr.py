@@ -13,14 +13,14 @@ if __name__ == "__main__":
 
     mypy = parse("/action/mypy.xml").findall("./testcase/failure")
     if len(mypy) > 0:
-        mypy = "```Python\n"+'\n'.join(map(lambda x: x.text,mypy))+"\n```"
+        mypy = "\n```Python\n"+'\n'.join(map(lambda x: x.text,mypy))+"\n```"
     else:
         mypy = "\nNo typing errors"
 
     message = (
         HEADER
         + PEP_HEADER
-        + "```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"
+        + "\n```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"
         + MYPY_HEADER
         + mypy
     )
