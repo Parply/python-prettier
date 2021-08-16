@@ -7,7 +7,7 @@ import pandas as pd
 def test(a):
     return (
         2  * a
-        + 1
+        +  1
         + 4
         + 3
         + 6

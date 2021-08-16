@@ -2,7 +2,7 @@ import torch
 
 
 def test(a: torch.Tensor):
-    return a + 1
+    return a  + 1
 
 
 a = torch.ones((50 , 50))
