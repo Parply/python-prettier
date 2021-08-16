@@ -35,7 +35,8 @@ function format_python {
 
 function main_script {
     echo $PWD
-    cd path
+    ls
+    cd repo
     git checkout $GITHUB_HEAD_REF
     echo $PWD
     format_sql
