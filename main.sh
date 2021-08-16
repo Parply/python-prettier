@@ -8,16 +8,6 @@ function commit_git {
     git push
 }
 
-function format_sql {
-    FILES=$(git diff --name-only HEAD^..HEAD | grep \.sql$)
-    if [[ ! -z "$FILES" ]]; then 
-        echo $FILES | xargs -n 1 -P 4 -I sqlformat -f {} -g {}
-        if ! git diff-index --quiet HEAD --; then
-            commit_git "SQL Formatting Bot" ":whale: SQL Formatting :whale:"
-        fi
-    fi
-}
-
 function format_python {
     FILES=$(git diff --name-only HEAD^..HEAD | grep \.py$)
     if [[ ! -z "$FILES" ]]; then 
@@ -27,7 +17,7 @@ function format_python {
             commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml "$GITHUB_WORKSPACE/mypy.xml"
-        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile="$GITHUB_WORKSPACE/.pylintrc" > "$GITHUB_WORKSPACE/pylint.txt"
+        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=/.pylintrc > "$GITHUB_WORKSPACE/pylint.txt"
         
         python "$GITHUB_WORKSPACE/comment_pr.py"
     fi
@@ -39,7 +29,6 @@ function main_script {
     cd repo
     git checkout $GITHUB_HEAD_REF
     echo $PWD
-    format_sql
     format_python
 }
 
