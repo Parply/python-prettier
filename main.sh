@@ -26,10 +26,10 @@ function format_python {
         if ! git diff-index --quiet HEAD --; then
             commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
-        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml ../mypy.xml
-        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=../.pylintrc > ../pylint.txt
+        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml "$GITHUB_WORKSPACE/mypy.xml"
+        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=../.pylintrc > "$GITHUB_WORKSPACE/pylint.txt"
         
-        python ../comment_pr.py
+        python "$GITHUB_WORKSPACE/comment_pr.py"
     fi
 }
 

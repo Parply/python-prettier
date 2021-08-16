@@ -10,6 +10,7 @@ if __name__ == "__main__":
     GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
     PR_NUMBER = os.getenv("PR_NUMBER")
+    GITHUB_WORKSPACE = os.getenv("GITHUB_WORKSPACE")
 
     print(os.getcwd())
     print(os.listdir())
@@ -17,9 +18,9 @@ if __name__ == "__main__":
     MESSAGE = (
         HEADER
         + PEP_HEADER
-        + open("../pylint", "r").read()
+        + open(f"{GITHUB_WORKSPACE}/pylint", "r").read()
         + MYPY_HEADER
-        + parse("../mypy.xml").findall("./testcase/failure")[0].text
+        + parse(f"{GITHUB_WORKSPACE}/mypy.xml").findall("./testcase/failure")[0].text
     )
 
     print(GITHUB_TOKEN, GITHUB_REPOSITORY, PR_NUMBER, MESSAGE)
