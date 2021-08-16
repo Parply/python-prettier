@@ -33,7 +33,11 @@ function format_python {
     fi
 }
 
-git checkout $GITHUB_HEAD_REF
-echo $PWD
-format_sql
-format_python
+function main_script {
+    git checkout $GITHUB_HEAD_REF
+    echo $PWD
+    format_sql
+    format_python
+}
+
+main_script
