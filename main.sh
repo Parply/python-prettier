@@ -27,7 +27,7 @@ function format_python {
 function main_script {
     cd repo
     git checkout $GITHUB_HEAD_REF
-    format_python
+    format_python 
 }
 
 main_script
