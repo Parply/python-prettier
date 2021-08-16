@@ -4,9 +4,9 @@ from html import escape
 from defusedxml.ElementTree import parse
 from github import Github
 
-HEADER = "<h2>:snake: Python Styling :snake:</h2><br>"
-PEP_HEADER = "<summary><h4><b>PEP8 Standard Report (pylint)</b></h4></summary><br>"
-MYPY_HEADER = "<summary><h4><b>Typing Report (mypy)</b></summary></h4><br>"
+HEADER = "<h2>:snake: Python Styling :snake:</h2><br>\n"
+PEP_HEADER = "<summary><h4><b>PEP8 Standard Report (pylint)</b></h4></summary><br>\n"
+MYPY_HEADER = "<summary><h4><b>Typing Report (mypy)</b></summary></h4><br>\n"
 if __name__ == "__main__":
     GITHUB_TOKEN = os.getenv("INPUT_GH_TOKEN")
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")
@@ -15,9 +15,9 @@ if __name__ == "__main__":
     MESSAGE = (
         HEADER
         + PEP_HEADER
-        + "```\n" + open("/action/pylint.txt", "r").read()+"```\n"#).replace('\n',"<br>").replace(' ',"&nbsp;")
+        + "\n```Python\n" + open("/action/pylint.txt", "r").read()+"\n```\n"#).replace('\n',"<br>").replace(' ',"&nbsp;")
         + MYPY_HEADER
-        + "```\n"+parse("/action/mypy.xml").findall("./testcase/failure")[0].text+"```\n"#).replace('\n',"<br>").replace(' ',"&nbsp;")
+        + "\n```Python\n"+parse("/action/mypy.xml").findall("./testcase/failure")[0].text+"\n```\n"#).replace('\n',"<br>").replace(' ',"&nbsp;")
     )
 
     git = Github(GITHUB_TOKEN)
