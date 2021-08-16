@@ -4,9 +4,9 @@ from html import escape
 from defusedxml.ElementTree import parse
 from github import Github
 
-HEADER = "<h2>:snake: Python Styling :snake:</h2><br>\n"
-PEP_HEADER = "<summary><h4><b>PEP8 Standard Report (pylint)</b></h4></summary><br>\n"
-MYPY_HEADER = "<summary><h4><b>Typing Report (mypy)</b></summary></h4><br>\n"
+HEADER = "<h2>:snake: Python Styling :snake:</h2>\n"
+PEP_HEADER = "<summary><h4><b>PEP8 Standard Report (pylint)</b></h4></summary>\n"
+MYPY_HEADER = "<summary><h4><b>Typing Report (mypy)</b></summary></h4>\n"
 if __name__ == "__main__":
     GITHUB_TOKEN = os.getenv("INPUT_GH_TOKEN")
     GITHUB_REPOSITORY = os.getenv("GITHUB_REPOSITORY")

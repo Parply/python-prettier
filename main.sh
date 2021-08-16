@@ -17,6 +17,10 @@ function format_python {
             commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
         mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml "/action/mypy.xml"
+        
+        a=$(mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 2&>1)
+        echo $a
+        
         pylint $FILES --enable spelling --spelling-dict en_GB --rcfile="/action/.pylintrc" > "/action/pylint.txt"
         
         python "/action/comment_pr.py"
