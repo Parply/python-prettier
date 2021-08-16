@@ -11,7 +11,7 @@ function commit_git {
 function format_sql {
     FILES=$(git diff --name-only HEAD^..HEAD | grep \.sql$)
     if [[ ! -z "$FILES" ]]; then 
-        echo $FILES | xargs -n 1 -P 8 - I sqlformat -f {} -g {}
+        echo $FILES | xargs -n 1 -P 4 - I sqlformat -f {} -g {}
         if ! git diff-index --quiet HEAD --; then
             commit_git "SQL Formatting Bot" ":whale: SQL Formatting :whale:"
         fi
@@ -26,14 +26,15 @@ function format_python {
         if ! git diff-index --quiet HEAD --; then
             commit_git "Python Formatting Bot" ":snake:	Python Formatting :snake:"
         fi
-        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml /mypy.xml
-        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc > /pylint.txt
+        mypy $FILES --ignore-missing-imports --strict --install-types --non-interactive --pretty --python-version 3.7 --junit-xml ../mypy.xml
+        pylint $FILES --enable spelling --spelling-dict en_GB --rcfile=./.pylintrc > ../pylint.txt
         
-        python ./comment_pr.py
+        python ../comment_pr.py
     fi
 }
 
 function main_script {
+    cd path
     git checkout $GITHUB_HEAD_REF
     echo $PWD
     format_sql
