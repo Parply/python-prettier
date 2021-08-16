@@ -34,6 +34,7 @@ function format_python {
 }
 
 function main_script {
+    echo $PWD
     cd path
     git checkout $GITHUB_HEAD_REF
     echo $PWD

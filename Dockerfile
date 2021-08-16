@@ -7,4 +7,4 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt update -y && apt install -y jq hunspell-en-gb enchant nodejs
 RUN npm install --global poor-mans-t-sql-formatter-cli
 RUN export INSTALL_ON_LINUX=1; pip install -r requirements.txt
-ENTRYPOINT ["/bin/bash","./main.sh"]
+ENTRYPOINT ["/bin/bash","/main.sh"]
